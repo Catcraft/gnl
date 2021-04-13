@@ -6,14 +6,13 @@
 /*   By: ninieddu <ninieddu@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:04:00 by ninieddu          #+#    #+#             */
-/*   Updated: 2021/04/12 08:50:01 by ninieddu         ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 14:48:49 by ninieddu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "get_next_line.h"
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*save;
 	char		*buffer;
@@ -22,10 +21,12 @@ int		get_next_line(int fd, char **line)
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0
 		|| (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)))))
 		return (-1);
-	while (ft_lenline(save) == -1 && (rret = read(fd, buffer, BUFFER_SIZE)) > 0)
+	while (ft_lenline(save) == -1 && rret > 0)
 	{
+		rret = read(fd, buffer, BUFFER_SIZE);
 		buffer[rret] = '\0';
-		if (!(save = ft_strjoin_gnl(save, buffer)))
+		save = ft_strjoin_gnl(save, buffer);
+		if (save == NULL)
 			return (-1);
 	}
 	buffer = ft_free(buffer);
@@ -36,7 +37,7 @@ int		get_next_line(int fd, char **line)
 	return (0);
 }
 
-int		next_gnl(char **save, char **line, char **buffer)
+int	next_gnl(char **save, char **line, char **buffer)
 {
 	char	*buff_tmp;
 

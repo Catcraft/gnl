@@ -6,10 +6,9 @@
 /*   By: ninieddu <ninieddu@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:04:47 by ninieddu          #+#    #+#             */
-/*   Updated: 2021/04/12 08:50:19 by ninieddu         ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 14:44:16 by ninieddu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H

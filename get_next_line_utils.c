@@ -6,10 +6,9 @@
 /*   By: ninieddu <ninieddu@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 18:53:36 by ninieddu          #+#    #+#             */
-/*   Updated: 2021/04/12 08:15:36 by ninieddu         ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 14:53:15 by ninieddu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
@@ -30,7 +29,8 @@ char	*ft_substr_gnl(char *s, int start, int len)
 		s = NULL;
 	if (gnl_strlen(s) < start)
 		len = 0;
-	if (!(new = malloc(sizeof(char) * len + 1)))
+	new = malloc(sizeof(char) * len + 1);
+	if (new == NULL)
 		return (NULL);
 	while (i < len && s[start])
 		new[i++] = s[start++];
@@ -48,7 +48,8 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	j = 0;
 	if (!s1)
 		s1 = ft_substr_gnl("", 0, 0);
-	if (!(new = malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1))))
+	new = malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
+	if (new == NULL)
 	{
 		s1 = ft_free(s1);
 		return (NULL);
@@ -63,22 +64,24 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	return (new);
 }
 
-int		ft_lenline(char *s)
+int	ft_lenline(char *s)
 {
 	int		i;
 
 	i = 0;
 	if (s)
+	{
 		while (s[i])
 		{
 			if (s[i] == '\n')
 				return (i);
 			i++;
 		}
+	}
 	return (-1);
 }
 
-int		gnl_strlen(const char *s)
+int	gnl_strlen(const char *s)
 {
 	int		i;
 
