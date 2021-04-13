@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   get_next_line_utils.c                            .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ninieddu <ninieddu@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/05 18:53:36 by ninieddu     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/16 20:27:36 by ninieddu    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ninieddu <ninieddu@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/05 18:53:36 by ninieddu          #+#    #+#             */
+/*   Updated: 2021/04/12 08:15:36 by ninieddu         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
@@ -20,7 +20,7 @@ char	*ft_free(char *s)
 	return (s);
 }
 
-char	*ft_substr(char *s, int start, int len)
+char	*ft_substr_gnl(char *s, int start, int len)
 {
 	int		i;
 	char	*new;
@@ -28,7 +28,7 @@ char	*ft_substr(char *s, int start, int len)
 	i = 0;
 	if (!s)
 		s = NULL;
-	if (ft_strlen(s) < start)
+	if (gnl_strlen(s) < start)
 		len = 0;
 	if (!(new = malloc(sizeof(char) * len + 1)))
 		return (NULL);
@@ -38,7 +38,7 @@ char	*ft_substr(char *s, int start, int len)
 	return (new);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -47,8 +47,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	j = 0;
 	if (!s1)
-		s1 = ft_substr("", 0, 0);
-	if (!(new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		s1 = ft_substr_gnl("", 0, 0);
+	if (!(new = malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1))))
 	{
 		s1 = ft_free(s1);
 		return (NULL);
@@ -78,7 +78,7 @@ int		ft_lenline(char *s)
 	return (-1);
 }
 
-int		ft_strlen(const char *s)
+int		gnl_strlen(const char *s)
 {
 	int		i;
 
